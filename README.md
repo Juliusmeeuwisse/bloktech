@@ -1,21 +1,26 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [bloktech REPO - Julius Meeuwisse](#bloktech-repo---julius-meeuwisse)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+#Table of Contents
+- [About](#about)
+- [Getting started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
 ## About
+Information about my project and my feature.
 
 ## Getting started
+How to get the application running.
 
 ### Prerequisites
+Everything you need to have installed to start using the application.
 
 ### Installation 
+How to start using application?
 
 ## Usage
+What can I use it for?
 
 ## License
-
+MIT license.
 
