@@ -1,4 +1,4 @@
-#Table of Contents
+# Table of Contents
 - [About](#about)
 - [Getting started](#getting-started)
   * [Prerequisites](#prerequisites)
