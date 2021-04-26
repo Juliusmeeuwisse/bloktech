@@ -2,19 +2,24 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.set('view engine', 'ejs');
+
 app.use(express.static('static/public'))
 
+let music = ["Rap" , "R&B", "Pop"]
+
+let musicrandom = music[Math.floor(Math.random() * music.length)];
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.render('index', {musicrandom});
 });
 
-app.get('/login', (req, res) => {
-  res.send('The login to account page')
+app.get('/matches', (req, res) => {
+  res.send('The main page with all matches')
 });
 
-app.get('/signin', (req, res) => {
-  res.send('The create account page')
+app.get('/likedlist', (req, res) => {
+  res.send('List with all your likes')
 });
 
 app.get('/muziek', (req, res) => {
