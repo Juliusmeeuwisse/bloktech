@@ -5,6 +5,9 @@ const port = 3000
 app.set('view engine', 'ejs');
 
 app.use(express.static('static/public'))
+app.use(express.json());
+app.use(express.urlencoded());
+app.set ('view engine' , 'ejs');
 
 let music = ["Rap" , "R&B", "Pop"]
 
