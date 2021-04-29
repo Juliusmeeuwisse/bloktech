@@ -8,9 +8,8 @@ app.use(express.static('static/public'))
 
 let music = ["Rap" , "R&B", "Pop"]
 
-let musicrandom = music[Math.floor(Math.random() * music.length)];
-
 app.get('/', (req, res) => {
+  let musicrandom = music[Math.floor(Math.random() * music.length)];
   res.render('index', {musicrandom});
 });
 
