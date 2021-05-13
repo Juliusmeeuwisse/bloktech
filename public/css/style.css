@@ -1,0 +1,37 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+h1 {
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+body {
+    background: url(../images/background.png);
+    overflow: hidden;
+    height: 110vh;
+    width: 100vw;
+    z-index: 1000;
+    background-position: 50% 60%;
+}
+#buttons {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10vw;
+}
+.bigmainbutton {
+    width: 7vh;
+    height: auto;
+}
+.profilecard_img {
+    clip-path: inset(3vh 0% 0% 0% round 2%);
+    height: 50vh;
+    width: auto;
+}
+.profilesection {
+    display: flex;
+    justify-content: center;
+
+}

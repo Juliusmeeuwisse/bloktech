@@ -13,7 +13,24 @@ Information about my project and my feature.
 How to get the application running.
 
 ### Prerequisites
-Everything you need to have installed to start using the application.
+Be sure to have git installed, if you don't you can install using these commands in the cli:
+
+Windows:
+
+``` 
+apt-get install git
+```
+
+MacOS:
+First install Homebrew:
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+Then install git:
+```
+brew install git
+```
+
 
 ### Installation 
 How to start using application?
