@@ -7,7 +7,7 @@
 - [License](#license)
 
 ## About
-Information about my project and my feature.
+My project consists of a matching application, which matches people based on musical taste.
 
 ## Getting started
 How to get the application running.
