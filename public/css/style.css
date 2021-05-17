@@ -22,7 +22,7 @@ body {
     margin: 10vw;
 }
 .bigmainbutton {
-    width: 7vh;
+    width: 5vh;
     height: auto;
 }
 .profilecard_img {
@@ -33,5 +33,20 @@ body {
 .profilesection {
     display: flex;
     justify-content: center;
-
+    margin-top: 4vh;
+}
+.logo
+{
+    margin-top: 4vh;
+    margin-left: 8vw;
+}
+#mainbuttons {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10vh;
+}
+.navbutton {
+    margin: 7%;
 }

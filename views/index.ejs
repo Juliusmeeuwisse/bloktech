@@ -1,22 +1,33 @@
 <%- include('partials/head'); -%>
 <header>
-    <img src="images/musiclogo.svg">
+    <img class="logo" src="images/musiclogo.svg">
 </header>
-<body>
 
-    <h2><%= musicrandom %></h2>
+<body>
     <section class="profilesection">
+        <% if (locals.user) { %>
+            <p>
+                <%= user.firstname  =%> 
+            </p>
+        }
+
         <img class="profilecard_img" src="images/profile_img.png">
 
     </section>
     <ul id="buttons">
-        <li><a href="#"><img class="bigmainbutton" src="images/dislikebutton.png"></a></li>
-        <li><a href="#"><img class="bigmainbutton" src="images/likebutton.png"></a></li>
-        <li><a href="#"><img class="bigmainbutton" src="images/perfectmatchbutton.png"></a></li>
+        <form action="/back" method="post">
+            <input type="submit">
+        </form>
+        <form action="/dislike" method="post">
+            <input type="submit">
+        </form>
+        <form action="/like" method="post">
+            <input type="submit">
+        </form>
     </ul>
-    <button id="homebutton">Home</button>
-    <button id="listbutton">List</button>
-    <button id="profilebutton">Profile</button>
 </body>
+<footer>
+    <%- include ('partials/nav'); -%>
+</footer>
 
 </html>
