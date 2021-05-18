@@ -5,11 +5,14 @@
 
 <body>
     <section class="profilesection">
-        <% if (locals.user) { %>
-            <p>
-                <%= user.firstname  =%> 
-            </p>
-        }
+
+        <% if (user) { %>
+        <p>
+            <%= user.firstname %>
+        </p>
+        <% } else { %>
+            <p>No users found</p>
+            <% } %>
 
         <img class="profilecard_img" src="images/profile_img.png">
 

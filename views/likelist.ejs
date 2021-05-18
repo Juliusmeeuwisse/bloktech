@@ -4,18 +4,20 @@
 </header>
 
 <body>
-    <section class="profilesection">
-        <img class="profilecard_img" src="images/profile_img.png">
-
-    </section>
-    <ul id="buttons">
-        <li><a href="./likelist.ejs"><img class="personpic" src="images/dislikebutton.png"></a></li>
-        <li><a href="#"><img class="bigmainbutton" src="images/likebutton.png"></a></li>
-        <li><a href="#"><img class="bigmainbutton" src="images/perfectmatchbutton.png"></a></li>
-    </ul>
-    <button id="homebutton">Home</button>
-    <button id="listbutton">List</button>
-    <button id="profilebutton">Profile</button>
+    <% for ( i=0 ; i < liked.length; i++) { %>
+<p>
+    <%= liked[i].firstname %>
+</p>
+<p>
+    <%= liked[i].age %>
+</p>
+<p>
+    <%= liked[i].musicGenre %>
+</p>
+    <% } %>
 </body>
+<footer>
+    <%- include('partials/nav'); -%>
+</footer>
 
 </html>

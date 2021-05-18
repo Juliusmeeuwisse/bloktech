@@ -4,10 +4,11 @@ const port = 3000
 const dotenv = require("dotenv")
 dotenv.config();
 
-let currentUser = [];
 let likedList = [];
 let dislikedList = [];
+let currentUser = [];
 
+console.log(likedList);
 
 let profile = {
   firstname: "testsubject",
@@ -18,22 +19,29 @@ const users = [{
     "userID": 0,
     "firstname": "Pieter",
     "age": 20,
-    "Muziekgenre": "rap"
+    "musicGenre": "rap"
   },
   {
     "userID": 1,
     "firstname": "Jaap",
     "age": 23,
-    "Muziekgenre": "pop"
+    "musicGenre": "pop"
+  },
+  {
+    "userID": 2,
+    "firstname": "geert",
+    "age": 30,
+    "musicGenre": "pop"
   }
 
 ]
 
-getUserProfile = (userID) => {
-  console.log('User profile ID ${userID}')
-  return users[userID - 1];
-}
-AvailableUser = () => {
+// let getUserProfile = (userID) => {
+//   console.log('User profile ID ${userID}')
+//   return users[userID - 1];
+// }
+
+let AvailableUser = () => {
   for (let i = 0; i < users.length; i++) {
     if (
       !likedList.includes(users[i]) &&
@@ -55,7 +63,7 @@ app.get('/', (req, res) => {
   currentUser = AvailableUser();
   res.render('index', {
     user: currentUser
-  });
+  }); 
 });
 
 app.get('/matches', (req, res) => {
@@ -63,7 +71,9 @@ app.get('/matches', (req, res) => {
 });
 
 app.get('/likelist', (req, res) => {
-  res.render('likelist')
+  res.render('likelist', {
+    liked: likedList
+  })
 });
 
 app.get('/profile', (req, res) => {
@@ -72,11 +82,14 @@ app.get('/profile', (req, res) => {
 
 
 app.post('/like', (req, res) => {
-  console.log("hi")
   likedList.push(currentUser)
-  res.redirect('/')
   currentUser = AvailableUser();
+  res.render('index', {
+    user: currentUser
+  });
 });
+
+console.log(likedList);
 
 app.use(function (req, res, next) {
   res.status(404).send("I'm sorry but we couldn't find that page!")
