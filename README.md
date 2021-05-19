@@ -40,7 +40,7 @@ How to start using application?
 * Start the application using: ``` npm start ```
 
 ### Screenshots
-![](https://github.com/Juliusmeeuwisse/bloktech/blob/main/WikiImages/readmescreenshot.png)
+<img src="https://github.com/Juliusmeeuwisse/bloktech/blob/main/WikiImages/readmescreenshot.png" alt="screenshot of app" width="200">
 
 ### License
 [https://github.com/Juliusmeeuwisse/bloktech/blob/main/LICENSE](license)
