@@ -1,20 +1,27 @@
 <%- include('partials/head'); -%>
-<header>
-    <img class="logo" src="images/musiclogo.svg">
-</header>
+<%- include('partials/header'); -%>
 
 <body>
     <% for ( i=0 ; i < liked.length; i++) { %>
-<p>
-    <%= liked[i].firstname %>
-</p>
-<p>
-    <%= liked[i].age %>
-</p>
-<p>
-    <%= liked[i].musicGenre %>
-</p>
-    <% } %>
+    <section class="likeListItem">
+    <article class="likeItemText">
+        <p class="defaultText" >
+            <%= liked[i].firstname %>
+        </p>
+        <p class="defaultText"> 
+            Age:
+            <%= liked[i].age %>
+        </p>
+        <p class="defaultText">
+            Favorite genre:
+            <%= liked[i].musicGenre %>
+        </p>
+    </article>
+    <article class="likeItemPic">
+        <img class="profileimg_list" src=<%= liked[i].profilepicture %>>
+    </article>
+</section>
+        <% } %>
 </body>
 <footer>
     <%- include('partials/nav'); -%>

@@ -1,11 +1,9 @@
+/* rules for all ejs */
 * {
     padding: 0%;
     margin: 0%;
 }
-h1 {
-    color: black;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-}
+/* styling for body */
 body {
     background: url(../images/background.png);
     overflow: hidden;
@@ -14,6 +12,7 @@ body {
     z-index: 1000;
     background-position: 50% 60%;
 }
+/* styling for dislike & like button */
 #buttons {
     list-style-type: none;
     display: flex;
@@ -21,32 +20,90 @@ body {
     justify-content: space-between;
     margin: 10vw;
 }
+
+/* default style for big main button  */
 .bigmainbutton {
     width: 5vh;
     height: auto;
 }
+/* default for text  */
+.defaultText {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+/* styling for image on profile card, rounded edges & cropping */
 .profilecard_img {
     clip-path: inset(3vh 0% 0% 0% round 2%);
     height: 50vh;
-    width: auto;
+    width: 80vw;
+    object-fit: cover;
+
 }
+/* profile section on main menu styling */
 .profilesection {
     display: flex;
     justify-content: center;
     margin-top: 4vh;
 }
-.logo
-{
+/* styling for logo in header */
+.logo {
     margin-top: 4vh;
     margin-left: 8vw;
 }
+/* styling for navbar */
+#navbar {
+    position: absolute;
+    top: 85vh;
+    width: 100%;
+}
+/* styling for navbar buttons */
 #mainbuttons {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 10vh;
 }
+
 .navbutton {
     margin: 7%;
+}
+/* sizing for dislike and like button */
+.formbuttons {
+    height: 50px;
+    width: 50px;
+}
+/* styling for image in liked list */
+.profileimg_list {
+    height: 10vh;
+    width: 22vw;
+    clip-path: inset(0% 0% 0% 0% round 100%);
+    object-fit: cover;
+}
+/* styling for list of liked profiles */
+.likeListItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    margin-top: 3vh;
+    border-bottom: solid #385b93 2px;
+}
+/* positioning for the text of a profile */
+.likeItemText {
+    margin-left: 5%;
+
+}
+/* positioning for the image of a profile  */
+.likeItemPic {
+    margin-right: 5%;
+}
+.profileText {
+    position: fixed;
+    z-index: 100;
+    top: 55vh;
+    margin-left: 4vw;
+}
+.defaultName {
+    font-weight: bold;
+    font-size: 20px;
 }

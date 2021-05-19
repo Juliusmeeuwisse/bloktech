@@ -1,31 +1,37 @@
 <%- include('partials/head'); -%>
-<header>
-    <img class="logo" src="images/musiclogo.svg">
-</header>
+<%- include('partials/header'); -%>
 
 <body>
     <section class="profilesection">
-
-        <% if (user) { %>
-        <p>
-            <%= user.firstname %>
-        </p>
-        <% } else { %>
-            <p>No users found</p>
+        <article>
+            <% if (user) { %>
+                <article class="profileText">
+            <p class="defaultText , defaultName">
+                <%= user.firstname %>
+            </p>
+            <p class="defaultText">
+                Favorite genre:
+                <%= user.musicGenre %>
+            </p>
+            <p class="defaultText">
+                Age:
+                <%= user.age %>
+            </p>
+        </article>
+            <img class="profilecard_img" src=<%= user.profilepicture %>>
+            <% } else { %>
+            <p class="defaultText">No more users to match</p>
+            <img class="profilecard_img" src="images/sadface.jpeg">
             <% } %>
-
-        <img class="profilecard_img" src="images/profile_img.png">
-
+            <!-- <img class="profilecard_img" src="images/profile_img.png"> -->
+        </article>
     </section>
     <ul id="buttons">
-        <form action="/back" method="post">
-            <input type="submit">
-        </form>
         <form action="/dislike" method="post">
-            <input type="submit">
+            <input class="formbuttons" type="image" src="images/dislikebutton.png">
         </form>
         <form action="/like" method="post">
-            <input type="submit">
+            <input class="formbuttons" type="image" src="images/likebutton.png">
         </form>
     </ul>
 </body>
