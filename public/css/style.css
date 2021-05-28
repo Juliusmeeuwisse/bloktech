@@ -11,6 +11,9 @@ body {
     width: 100vw;
     z-index: 1000;
     background-position: 50% 60%;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    
 }
 /* styling for dislike & like button */
 #buttons {
@@ -25,11 +28,6 @@ body {
 .bigmainbutton {
     width: 5vh;
     height: auto;
-}
-/* default for text  */
-.defaultText {
-    font-family: 'Roboto', sans-serif;
-    color: white;
 }
 /* styling for image on profile card, rounded edges & cropping */
 .profilecard_img {
@@ -106,4 +104,12 @@ body {
 .defaultName {
     font-weight: bold;
     font-size: 20px;
+}
+.emailicon {
+    height: 2.5vh;
+    width: auto;
+}
+.keyicon {
+    height: 3vh;
+    width: auto;
 }
