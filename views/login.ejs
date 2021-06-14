@@ -1,12 +1,23 @@
 <%- include('partials/head'); -%>
 <%- include('partials/header'); -%>
-
+<section class="login">
 <h2 class="signin">Sign in</h2>
+<article class="loginarticle">
 <p>Email</p>
-<img class="emailicon" src="images/email_icon.png">
+<form method="get">
+    <input type="text">
+</form>
+</article>
+<article class="loginarticle">
 <p>Password</p>
-<img class="keyicon" src="images/key_icon.png">
+<form method="get">
+    <input type="text">
+</form>
 <p>Forgot password?</p>
+</article>
+<article class="loginarticle">
 <form method="get" action="/main">
     <button type="submit">Sign in</button>
 </form>
+</article>
+</section>

@@ -105,6 +105,7 @@ body {
     font-weight: bold;
     font-size: 20px;
 }
+/* positioning for things on the login page */
 .emailicon {
     height: 2.5vh;
     width: auto;
@@ -112,4 +113,14 @@ body {
 .keyicon {
     height: 3vh;
     width: auto;
+}
+.login {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+}
+.loginarticle {
+    margin-top: 5vh;
 }

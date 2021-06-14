@@ -28,15 +28,16 @@
     </section>
     <ul id="buttons">
         <form action="/dislike" method="post">
-            <input class="formbuttons" type="image" src="images/dislikebutton.png">
+            <input id="dislikebutton" class="formbuttons" type="image" src="images/dislikebutton.png">
         </form>
         <form action="/like" method="post">
-            <input class="formbuttons" type="image" src="images/likebutton.png">
+            <input id="likebutton" class="formbuttons" type="image" src="images/likebutton.png">
         </form>
     </ul>
 </body>
 <footer>
     <%- include ('partials/nav'); -%>
+    <script src="./scripts/index.js"></script>
 </footer>
 
 </html>
