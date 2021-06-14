@@ -2,23 +2,23 @@
 <%- include('partials/header'); -%>
 
 <body>
-    <% for ( i=0 ; i < liked.length; i++) { %>
+    <% for ( i=0 ; i < likedUse.length; i++) { %>
     <section class="likeListItem">
     <article class="likeItemText">
         <p class="defaultText" >
-            <%= liked[i].firstname %>
+            <%= likedUse[i].firstname %>
         </p>
         <p class="defaultText"> 
             Age:
-            <%= liked[i].age %>
+            <%= likedUse[i].age %>
         </p>
         <p class="defaultText">
             Favorite genre:
-            <%= liked[i].musicGenre %>
+            <%= likedUse[i].musicGenre %>
         </p>
     </article>
     <article class="likeItemPic">
-        <img class="profileimg_list" src=<%= liked[i].profilepicture %>>
+        <img class="profileimg_list" src=<%= likedUse[i].profilepicture %>>
     </article>
 </section>
         <% } %>

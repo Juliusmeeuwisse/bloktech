@@ -4,21 +4,21 @@
 <body>
     <section class="profilesection">
         <article>
-            <% if (profile) { %>
+            <% if (shownUser) { %>
                 <article class="profileText">
             <p class="defaultName">
-                <%= profile.firstname %>
+                <%= shownUser.firstname %>
             </p>
             <p>
                 Favorite genre:
-                <%= profile.musicGenre %>
+                <%= shownUser.musicGenre %>
             </p>
             <p>
                 Age:
-                <%= profile.age %>
+                <%= shownUser.age %>
             </p>
         </article>
-            <img class="profilecard_img" src=<%= profile.profilepicture %>>
+            <img class="profilecard_img" src=<%= shownUser.profilepicture %>>
             <% } else { %>
             <p>No more users to match</p>
             <img class="profilecard_img" src="images/sadface.jpeg">
