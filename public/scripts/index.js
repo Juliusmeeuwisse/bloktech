@@ -24,37 +24,42 @@ disliketext.textContent = "Disliked!";
 document.querySelector(".newdislike").appendChild(disliketext);
 const dislikearticle = document.querySelector(".newdislike");
 
-//play audio
+//play audio function
 function playlike(file) {
     let audiosource = "../sounds/" + file + ".wav";
     let audio = new Audio(audiosource);
     audio.play();
 }
-
+// add click event and call playlike function & hide text
 music_profimg.addEventListener("click", () => {
     playlike("like");
     songarticle.classList.add('hidehearsong');
 });
 
+// unhide like text
 likebutton.addEventListener("click", () => {
     likearticle.classList.remove('hide');
 });
 
+// unhide dislike text
 dislikebutton.addEventListener("click", () => {
     dislikearticle.classList.remove('hide');
 });
 
 const formdislike = document.querySelector('#dislikeform');
 const formlike = document.querySelector('#likeform');
+
 //detect horizontal swipe gestures
 let touchstartX = 0;
 let touchendX = 0;
 
+// submit form for form action like & dislike on swipe left or right
 function handleGesture() {
     if (touchendX < touchstartX) formdislike.submit();
     if (touchendX > touchstartX) formlike.submit();
 }
 
+// unhide like & dislike text in screen on left & right swipe
 function handleGesture2() {
     if (touchendX < touchstartX) dislikearticle.classList.remove('hide');
     if (touchendX > touchstartX) likearticle.classList.remove('hide');
