@@ -4,6 +4,10 @@
 <body>
     <section class="profilesection">
         <article>
+            <article class="likestyle newlike hide">
+            </article>
+            <article class="dislikestyle newdislike hide">
+            </article>
             <% if (shownUser) { %>
             <article id="hearsong" class="">
                 <img id="hearsongimg" class="">
@@ -30,10 +34,10 @@
         </article>
     </section>
     <ul id="buttons">
-        <form action="/dislike" method="POST">
+        <form id="dislikeform" action="/dislike" method="POST">
             <input id="dislikebutton" class="formbuttons" type="image" src="images/dislikebutton.png">
         </form>
-        <form action="/like" method="POSt">
+        <form id="likeform" action="/like" method="POST">
             <input id="likebutton" class="formbuttons" type="image" src="images/likebutton.png">
         </form>
     </ul>

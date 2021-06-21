@@ -68,7 +68,6 @@ app.get('/main', async (req, res) => {
           !loggedUser.liked.includes(neUsers[i]._id) &&
           !loggedUser.disliked.includes(neUsers[i]._id)) {
           nLnDUsers.push(neUsers[i]);
-          console.log(nLnDUsers[i]._id)
         }
       }
     },

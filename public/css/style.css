@@ -3,6 +3,7 @@
     padding: 0%;
     margin: 0%;
 }
+
 /* styling for body */
 body {
     background: url(../images/background.png);
@@ -13,8 +14,9 @@ body {
     background-position: 50% 60%;
     font-family: 'Roboto', sans-serif;
     color: white;
-    
+
 }
+
 /* styling for dislike & like button */
 #buttons {
     list-style-type: none;
@@ -29,6 +31,7 @@ body {
     width: 5vh;
     height: auto;
 }
+
 /* styling for image on profile card, rounded edges & cropping */
 .profilecard_img {
     clip-path: inset(3vh 0% 0% 0% round 2%);
@@ -37,24 +40,30 @@ body {
     object-fit: cover;
 
 }
+
 /* profile section on main menu styling */
 .profilesection {
     display: flex;
     justify-content: center;
     margin-top: 4vh;
+    animation: movecard 0.6s ease-in;
+    position: relative;
 }
+
 /* styling for logo in header */
 .logo {
     margin-top: 4vh;
     margin-left: 8vw;
     width: 17vw;
 }
+
 /* styling for navbar */
 #navbar {
     position: absolute;
     top: 85vh;
     width: 100%;
 }
+
 /* styling for navbar buttons */
 #mainbuttons {
     list-style-type: none;
@@ -66,6 +75,7 @@ body {
 .navbutton {
     margin: 7%;
 }
+
 /* sizing for dislike and like button */
 .formbuttons {
     height: 50px;
@@ -73,6 +83,7 @@ body {
     margin-left: 5vw;
     margin-right: 5vw;
 }
+
 /* styling for image in liked list */
 .profileimg_list {
     height: 10vh;
@@ -80,6 +91,7 @@ body {
     clip-path: inset(0% 0% 0% 0% round 100%);
     object-fit: cover;
 }
+
 /* styling for list of liked profiles */
 .likeListItem {
     display: flex;
@@ -89,47 +101,57 @@ body {
     margin-top: 3vh;
     border-bottom: solid #385b93 2px;
 }
+
 /* positioning for the text of a profile */
 .likeItemText {
     margin-left: 5%;
 
 }
+
 /* positioning for the image of a profile  */
 .likeItemPic {
     margin-right: 5%;
 }
+
 .profileText {
     position: fixed;
     z-index: 100;
     top: 55vh;
     margin-left: 4vw;
 }
+
 .defaultName {
     font-weight: bold;
     font-size: 20px;
 }
+
 /* positioning for things on the login page */
 .emailicon {
     height: 2.5vh;
     width: auto;
 }
+
 .keyicon {
     height: 3vh;
     width: auto;
 }
+
 .login {
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20vh;
+    margin-top: 18vh;
 }
+
 .loginarticle {
     margin-top: 5vh;
 }
+
 .hidehearsong {
     visibility: hidden;
 }
+
 #hearsong {
     position: fixed;
     z-index: 100;
@@ -140,19 +162,88 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    opacity: 0.6;
 }
+
 #hearsongimg {
     z-index: 100;
     height: 20px;
     width: 20px;
     order: 1;
     margin-top: 5px;
-    
+
 }
+
 #hearsong p {
     text-align: center;
     font-style: italic;
     font-size: 10pt;
-    color: rgb(69, 145, 207);
+    color: rgb(139, 139, 139);
     order: 0;
+}
+
+.loginbutton {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.loginform {
+    display: flex;
+    justify-content: center;
+}
+
+.loginform input {
+    margin-top: .5em;
+    padding: .75em;
+    border: 1px solid grey;
+    background-color: white;
+}
+
+#forgotPassword {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.likestyle {
+    align-items: center;
+    justify-content: center;
+    color: rgb(65, 194, 65);
+    font-size: 40pt;
+    position: fixed;
+    z-index: 101;
+    margin-left: 20vw;
+    margin-top: 25vh;
+}
+
+.dislikestyle {
+    align-items: center;
+    justify-content: center;
+    color: rgb(192, 76, 76);
+    font-size: 40pt;
+    position: fixed;
+    z-index: 101;
+    margin-left: 13vw;
+    margin-top: 25vh;
+}
+
+@keyframes movecard {
+    from {
+        right: -400px;
+    }
+
+    to {
+        right: 10px;
+    }
 }
