@@ -53,15 +53,13 @@ app.get('/main', async (req, res) => {
   }
   let loggedUser = await users.findOne(queryCurrentUser);
 
-  // Find user with Not equal ID to currentUserId
+  // Find user with unequal ID to currentUserId
   users.find({
     _id: {
       $ne: ObjectId(currentUserId)
     }
   }).toArray((error, neUsers) => {
       if (error) throw error;
-      nLnDUsers = [];
-
       // Look for users in liked and disliked array from currentUser
       for (let i = 0; i < neUsers.length; i++) {
 
@@ -70,13 +68,13 @@ app.get('/main', async (req, res) => {
           !loggedUser.liked.includes(neUsers[i]._id) &&
           !loggedUser.disliked.includes(neUsers[i]._id)) {
           nLnDUsers.push(neUsers[i]);
+          console.log(nLnDUsers[i]._id)
         }
       }
     },
 
     // Show first user in notLikednotDislikedUsers array
     shownUser = nLnDUsers[Math.floor(Math.random() * nLnDUsers.length)]);
-
   // Fetch user data
   res.render('main', {
     nLnDUsers,
@@ -98,6 +96,7 @@ app.post('/like', async (req, res) => {
   })
 });
 
+// renders page if disliked
 app.post('/dislike', async (req, res) => {
   await users.updateOne({
     _id: ObjectId(currentUserId)

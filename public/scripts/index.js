@@ -5,12 +5,17 @@ console.log("Succesfully connected front-end JS");
 const music_profimg = document.querySelector(".profilecard_img");
 const likebutton = document.querySelector("#likebutton");
 const dislikebutton = document.querySelector("#dislikebutton");
+document.querySelector("#hearsongimg").src="../images/speaker.png";
+
+const heartext = document.createElement("p");
+heartext.textContent = "Click image to listen to their favorite song!";
+document.querySelector("#hearsong").appendChild(heartext);
+const imgsong = document.querySelector("#hearsong");
 
 function playlike(file) {
     let audiosource = "../sounds/" + file + ".wav";
     let audio = new Audio(audiosource);
     audio.play();
-
 }
 
 function backgroundcolorlike() {
@@ -25,6 +30,8 @@ function backgroundcolordis() {
 
 music_profimg.addEventListener("click", () => {
     playlike("like");
+    imgsong.classList.add('hidehearsong');
 });
 likebutton.addEventListener("mouseover", backgroundcolorlike);
 dislikebutton.addEventListener("mouseover", backgroundcolordis);
+

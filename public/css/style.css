@@ -47,6 +47,7 @@ body {
 .logo {
     margin-top: 4vh;
     margin-left: 8vw;
+    width: 17vw;
 }
 /* styling for navbar */
 #navbar {
@@ -69,6 +70,8 @@ body {
 .formbuttons {
     height: 50px;
     width: 50px;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 /* styling for image in liked list */
 .profileimg_list {
@@ -123,4 +126,33 @@ body {
 }
 .loginarticle {
     margin-top: 5vh;
+}
+.hidehearsong {
+    visibility: hidden;
+}
+#hearsong {
+    position: fixed;
+    z-index: 100;
+    top: 21vh;
+    margin-left: 50vw;
+    white-space: pre-wrap;
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#hearsongimg {
+    z-index: 100;
+    height: 20px;
+    width: 20px;
+    order: 1;
+    margin-top: 5px;
+    
+}
+#hearsong p {
+    text-align: center;
+    font-style: italic;
+    font-size: 10pt;
+    color: rgb(69, 145, 207);
+    order: 0;
 }

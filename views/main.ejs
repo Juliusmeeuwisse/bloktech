@@ -5,19 +5,22 @@
     <section class="profilesection">
         <article>
             <% if (shownUser) { %>
-                <article class="profileText">
-            <p class="defaultName">
-                <%= shownUser.firstname %>
-            </p>
-            <p>
-                Favorite genre:
-                <%= shownUser.musicGenre %>
-            </p>
-            <p>
-                Age:
-                <%= shownUser.age %>
-            </p>
-        </article>
+            <article id="hearsong" class="">
+                <img id="hearsongimg" class="">
+            </article>
+            <article class="profileText">
+                <p class="defaultName">
+                    <%= shownUser.firstname %>
+                </p>
+                <p>
+                    Favorite genre:
+                    <%= shownUser.musicGenre %>
+                </p>
+                <p>
+                    Age:
+                    <%= shownUser.age %>
+                </p>
+            </article>
             <img class="profilecard_img" src=<%= shownUser.profilepicture %>>
             <% } else { %>
             <p>No more users to match</p>
@@ -27,10 +30,10 @@
         </article>
     </section>
     <ul id="buttons">
-        <form action="/dislike" method="post">
+        <form action="/dislike" method="POST">
             <input id="dislikebutton" class="formbuttons" type="image" src="images/dislikebutton.png">
         </form>
-        <form action="/like" method="post">
+        <form action="/like" method="POSt">
             <input id="likebutton" class="formbuttons" type="image" src="images/likebutton.png">
         </form>
     </ul>
