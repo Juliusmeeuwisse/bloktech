@@ -3,12 +3,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 require('dotenv').config();
 const {
-  MongoClient,
-  ObjectId
+  MongoClient
 } = require('mongodb');
 
 //Variables for like feature
-let currentUserId = '60c634413a5553c132f69594'
+let currentUserId = '5'
 
 let db = null;
 // is collection van db.collection('profile)
@@ -47,46 +46,31 @@ let shownUser = [];
 let nLnDUsers = [];
 
 app.get('/main', async (req, res) => {
+  EqualGenres().then(data => {
+    console.log(data);
+  });
+
   // Fetch current user data
-  const queryCurrentUser = {
-    _id: ObjectId(currentUserId)
-  }
-  let loggedUser = await users.findOne(queryCurrentUser);
-
-  // Find user with unequal ID to currentUserId
-  users.find({
-    _id: {
-      $ne: ObjectId(currentUserId)
-    }
-  }).toArray((error, neUsers) => {
-      if (error) throw error;
-      // Look for users in liked and disliked array from currentUser
-      for (let i = 0; i < neUsers.length; i++) {
-
-        // Push not liked or disliked users into nLnDUsers array
-        if (
-          !loggedUser.liked.includes(neUsers[i]._id) &&
-          !loggedUser.disliked.includes(neUsers[i]._id)) {
-          nLnDUsers.push(neUsers[i]);
-        }
-      }
-    },
-
-    // Show first user in notLikednotDislikedUsers array
-    shownUser = nLnDUsers[Math.floor(Math.random() * nLnDUsers.length)]);
-  // Fetch user data
+  let shownUser = await users.findOne({
+    id: currentUserId
+  })
   res.render('main', {
     nLnDUsers,
     shownUser
-  });
+  })
 });
+
+
+// Fetch user data
+
+
 // renders page if liked
 app.post('/like', async (req, res) => {
   await users.updateOne({
-    _id: ObjectId(currentUserId)
+    id: currentUserId
   }, {
     $push: {
-      liked: shownUser._id
+      liked: shownUser.id
     }
   })
   res.render('main', {
@@ -98,10 +82,10 @@ app.post('/like', async (req, res) => {
 // renders page if disliked
 app.post('/dislike', async (req, res) => {
   await users.updateOne({
-    _id: ObjectId(currentUserId)
+    id: currentUserId
   }, {
     $push: {
-      disliked: shownUser._id
+      disliked: shownUser.id
     }
   })
   res.render('main', {
@@ -126,11 +110,11 @@ app.get('/likelist', async (req, res) => {
 async function getLikedList() {
   try {
     let loggedIn = await users.findOne({
-      _id: ObjectId(currentUserId)
+      id: currentUserId
     })
 
     let likedUsers = await users.find({
-      _id: {
+      id: {
         $in: loggedIn.liked
       }
     }).toArray();
@@ -141,6 +125,42 @@ async function getLikedList() {
   }
 }
 
+const EqualGenres = async () => {
+  let loggedIn = await users.findOne({
+    id: currentUserId
+  })
+  const currentUserGenre = loggedIn.musicGenre
+  users.find({
+    musicGenre: {
+      $eq: (currentUserGenre)
+    }
+  }).toArray((error, userGenre) => {
+
+    function deleteUser() {
+      for (let i = 0; i < userGenre.length; i++) {
+        if (userGenre[i].id === currentUserId) {
+          userGenre.splice(i, 1)
+          return;
+        }
+      }
+    }
+    deleteUser();
+
+    function likedAndDisliked() {
+      for (let i = 0; i < userGenre.length; i++) {
+        if (
+          loggedIn.liked.includes(userGenre[i].id) ||
+          loggedIn.disliked.includes(userGenre[i].id)) {
+          userGenre.splice(i, 1)
+          return;
+        }
+      }
+    }
+    likedAndDisliked();
+    if (error) throw error;
+    return userGenre;
+  })
+}
 // renders profile page 
 app.get('/profile', (req, res) => {
   res.render('profilepage')
