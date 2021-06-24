@@ -26,21 +26,21 @@
                 </p>
             </article>
             <img class="profilecard_img" src=<%= shownUser.profilepicture %>>
+            <ul id="buttons">
+                <form id="dislikeform" action="/dislike" method="POST">
+                    <input id="dislikebutton" class="formbuttons" type="image" src="images/dislikebutton.png">
+                </form>
+                <form id="likeform" action="/like" method="POST">
+                    <input id="likebutton" class="formbuttons" type="image" src="images/likebutton.png">
+                </form>
+            </ul>
             <% } else { %>
-            <p>No more users to match</p>
+            <p>No more users to show :(</p>
             <img class="profilecard_img" src="images/sadface.jpeg">
             <% } %>
             <!-- <img class="profilecard_img" src="images/profile_img.png"> -->
         </article>
     </section>
-    <ul id="buttons">
-        <form id="dislikeform" action="/dislike" method="POST">
-            <input id="dislikebutton" class="formbuttons" type="image" src="images/dislikebutton.png">
-        </form>
-        <form id="likeform" action="/like" method="POST">
-            <input id="likebutton" class="formbuttons" type="image" src="images/likebutton.png">
-        </form>
-    </ul>
 </body>
 <footer>
     <%- include ('partials/nav'); -%>

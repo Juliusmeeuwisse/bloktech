@@ -43,138 +43,114 @@ app.use(express.urlencoded());
 app.set('view engine', 'ejs');
 
 let shownUser = [];
-let nLnDUsers = [];
 
 app.get('/main', async (req, res) => {
-  EqualGenres().then(data => {
-    console.log(data);
-  });
-
-  // Fetch current user data
-  let shownUser = await users.findOne({
-    id: currentUserId
-  })
-  res.render('main', {
-    nLnDUsers,
-    shownUser
-  })
-});
-
-
-// Fetch user data
-
-
-// renders page if liked
-app.post('/like', async (req, res) => {
-  await users.updateOne({
-    id: currentUserId
-  }, {
-    $push: {
-      liked: shownUser.id
-    }
-  })
-  res.render('main', {
-    nLnDUsers,
-    shownUser
-  })
-});
-
-// renders page if disliked
-app.post('/dislike', async (req, res) => {
-  await users.updateOne({
-    id: currentUserId
-  }, {
-    $push: {
-      disliked: shownUser.id
-    }
-  })
-  res.render('main', {
-    nLnDUsers,
-    shownUser
-  })
-});
-
-// renders like list
-app.get('/likelist', async (req, res) => {
-  try {
-    let test = await getLikedList();
-    res.render('likelist', {
-      likedUse: test
-    });
-  } catch (error) {
-    console.log(error)
-  }
-
-});
-
-async function getLikedList() {
-  try {
-    let loggedIn = await users.findOne({
-      id: currentUserId
+      let nLnDUsers = [];
+      let loggedIn = await users.findOne({
+        id: currentUserId
+      })
+      const currentUserGenre = loggedIn.musicGenre
+      // find users with genre equal to current user genre and put them in an array
+      users.find({
+        musicGenre: {
+          $eq: (currentUserGenre)
+        }
+      }).toArray((error, availableUsersList) => {
+        // check if users from availableuserslist have the same ID if they do splice them from array
+          for (let i = 0; i < availableUsersList.length; i++) {
+            if (availableUsersList[i].id === currentUserId) {
+              availableUsersList.splice(i, 1);
+            }
+          }
+          // for each user in available userlist check if its not in loggedIn user's liked/disliked if it isnt push it to nlnDUsers
+            for (let i = 0; i < availableUsersList.length; i++) {
+              if (
+                !loggedIn.liked.includes(availableUsersList[i].id) &&
+                !loggedIn.disliked.includes(availableUsersList[i].id)) {
+                nLnDUsers.push(availableUsersList[i]);
+              }
+            }
+          // grab a random user from nLnDUsers array and put it in ShownUser variable
+        shownUser = nLnDUsers[Math.floor(Math.random() * nLnDUsers.length)];
+        res.render('main', {
+          nLnDUsers,
+          shownUser
+        });
+      });
     })
 
-    let likedUsers = await users.find({
-      id: {
-        $in: loggedIn.liked
-      }
-    }).toArray();
+    // Fetch user data
 
-    return likedUsers;
-  } catch (error) {
-    console.log(error);
-  }
-}
 
-const EqualGenres = async () => {
-  let loggedIn = await users.findOne({
-    id: currentUserId
-  })
-  const currentUserGenre = loggedIn.musicGenre
-  users.find({
-    musicGenre: {
-      $eq: (currentUserGenre)
-    }
-  }).toArray((error, userGenre) => {
-
-    function deleteUser() {
-      for (let i = 0; i < userGenre.length; i++) {
-        if (userGenre[i].id === currentUserId) {
-          userGenre.splice(i, 1)
-          return;
+    // renders page if liked
+    app.post('/like', async (req, res) => {
+      await users.updateOne({
+        id: currentUserId
+      }, {
+        $push: {
+          liked: shownUser.id
         }
-      }
-    }
-    deleteUser();
+      })
+      res.redirect('main')
+    });
 
-    function likedAndDisliked() {
-      for (let i = 0; i < userGenre.length; i++) {
-        if (
-          loggedIn.liked.includes(userGenre[i].id) ||
-          loggedIn.disliked.includes(userGenre[i].id)) {
-          userGenre.splice(i, 1)
-          return;
+    // renders page if disliked
+    app.post('/dislike', async (req, res) => {
+      await users.updateOne({
+        id: currentUserId
+      }, {
+        $push: {
+          disliked: shownUser.id
         }
+      })
+      res.redirect('main')
+    });
+
+    // renders like list
+    app.get('/likelist', async (req, res) => {
+      try {
+        let test = await getLikedList();
+        res.render('likelist', {
+          likedUse: test
+        });
+      } catch (error) {
+        console.log(error)
+      }
+
+    });
+// function to get liked list
+    async function getLikedList() {
+      try {
+        let loggedIn = await users.findOne({
+          id: currentUserId
+        })
+
+        let likedUsers = await users.find({
+          id: {
+            $in: loggedIn.liked
+          }
+        }).toArray();
+
+        return likedUsers;
+      } catch (error) {
+        console.log(error);
       }
     }
-    likedAndDisliked();
-    if (error) throw error;
-    return userGenre;
-  })
-}
-// renders profile page 
-app.get('/profile', (req, res) => {
-  res.render('profilepage')
-});
 
-//render login page
-app.get('/', (req, res) => {
-  res.render('login')
-});
-//error message when typed in wrong path
-app.use(function (req, res) {
-  res.status(404).send("I'm sorry but we couldn't find that page!")
-});
+    // renders profile page 
+    app.get('/profile', (req, res) => {
+      res.render('profilepage')
+    });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-});
+    //render login page
+    app.get('/', (req, res) => {
+      res.render('login')
+    });
+    //error message when typed in wrong path
+    app.use(function (req, res) {
+      res.status(404).send("I'm sorry but we couldn't find that page!")
+    });
+
+    app.listen(port, () => {
+      console.log(`Example app listening at http://localhost:${port}`)
+    });
